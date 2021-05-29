@@ -5,18 +5,21 @@ interface WeekDayCardProps {
     day: string,
     restDay: boolean,
     id: string,
+    onChange: any,
 }
 
 export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
-    const {day, restDay, id} = props;
+    const {day, restDay, id, onChange} = props;
     const [rest, setRest] = useState(restDay);
     const [classs, setClasss] = useState('drag-box');
+    const [notes, setNotes] = useState(null);
+    const [print, setPrint] = useState(false);
+    const [value, setValue] = useState('');
     const drop = (e: any): void => {
         e.preventDefault();
         const cardId = e.dataTransfer.getData('cardId');
         const card = document.getElementById(cardId);
         if(card){
-            card.style.transition = 'heigth 2s';
           card.style.display = 'inline-flex';
           card.style.width = '90%';
           card.style.height = '6vh';
@@ -35,16 +38,41 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
         setClasss('drag-box');
     }
 
+    function getData(e: any){
+        setValue(e.target.value)
+        setNotes(e.target.value);
+        setPrint(false);
+        e.preventDefault();
+    }
+
+    function submit(e: any){
+        e.preventDefault();
+        setPrint(true);
+        e.target.value = '';
+        setValue('');
+    }
+    function handleClick(e: any){
+        const dayId = document.getElementById(e.target.parentElement.parentNode.id)
+        let parent;
+        console.log(dayId!.childNodes[3].childNodes);
+        for(let e = dayId!.childNodes[3].childNodes.length-1; e > 1; e--){
+            parent = dayId!.childNodes[3];
+            parent.removeChild(dayId!.childNodes[3].childNodes[e]);
+        }
+        setRest(!rest);
+    }
+
     return(
-        <div className="outer-bound" style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
-            <div className="day-title-wrapper"><p className="day-title">{day}</p><p className="rest-text" onClick={(e) => {setRest(!rest)}}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
-            <input className="notes-bar" placeholder="Enter notes"/>
-            {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> : <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop}>
-                        <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
-                        <p className="drag-text">Drag to add workout</p>
-                    </div>
+        <div className="outer-bound" id={id} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
+            <div className="day-title-wrapper"><p className="day-title">{day}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
+            <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
+            {print ? <div className="notes">- {notes}</div> : <p/>}
+            {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> :
+              <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop}>
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" onDragOver={dragOver} onDrop={drop} className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
+                <p className="drag-text" onDragOver={dragOver} onDrop={drop}>Drag to add workout</p>
+              </div>
             }
-            <div/>
         </div>
     )
 }

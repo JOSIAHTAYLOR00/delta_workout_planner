@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import logo from './assets/dt-logo-white.png';
 import PlannerModal from './PlannerModal';
 import PlanSection from './PlanSection';
+import axios from 'axios';
 
 function App(): JSX.Element {
+  const url = 'https://api.deltatrainer.fit';
+  const [prod, setProd] = useState(null);
+
+  useEffect(() => {
+    axios.get(url, {
+      auth: {
+      username: 'webdev@deltatrainer.fit',
+      password: ''
+    }
+  }).then(res => {
+      setProd(res.data);
+    });
+  }, [url])
+
   return (
     <div className="App">
      <header className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4" style={{height: "65px", zIndex: 1250}}>
@@ -17,7 +32,7 @@ function App(): JSX.Element {
                <button className="MuiButtonBase-root MuiButton-root MuiButton-contained" tabIndex={0} type="button" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true">
                  <span className="MuiButton-label">
                    <span className="MuiButton-endIcon MuiButton-iconSizeMedium">
-                     <img className="icon-img" style={{height: "17.67px"}}src="https://img.icons8.com/material-sharp/24/000000/user-male-circle.png"/>
+                     <img alt="" className="icon-img" style={{height: "17.67px"}}src="https://img.icons8.com/material-sharp/24/000000/user-male-circle.png"/>
                    </span>
                  </span>
                  <span className="MuiTouchRipple-root"></span>
