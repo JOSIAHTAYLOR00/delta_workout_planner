@@ -1,6 +1,7 @@
 .ps-content-wrapper {
-  width: 100%;
+  width: 70vw;
   height: 100%;
+  flex-wrap: wrap;
 }
 .ps-header {
   height: 80px;
@@ -17,14 +18,23 @@
 .ps-content {
   height: 100%;
   width: 100%;
-  display: inline-flex;
-  padding: 2rem;
+  //   padding: 2rem;
+  padding: 0px;
   padding-top: 0px;
-  flex-wrap: wrap;
 }
 .week-holder {
-  //   background-color: lightcoral;
   font-size: 1.6rem;
   font-weight: 900;
   width: 100%;
+  margin-left: 2rem;
+}
+.plan-day-card-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-direction: row;
+  align-content: flex-start;
 }

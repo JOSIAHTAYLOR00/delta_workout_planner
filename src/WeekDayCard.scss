@@ -1,0 +1,88 @@
+.outer-bound {
+  min-width: 28vw;
+  max-width: 28vw;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: block;
+  margin-bottom: 2rem;
+}
+.day-title-wrapper {
+  width: 100%;
+  display: inline-block;
+}
+.day-title {
+  font-size: 1.4rem;
+  margin-top: 0px;
+  width: 30%;
+  margin: 0px;
+}
+.rest-text {
+  color: blue;
+  //   font-weight: bolder;
+  float: right;
+  width: 100%;
+  margin: 0px;
+  text-align: right;
+  position: relative;
+  bottom: 1.2rem;
+}
+.rest-text:hover {
+  cursor: pointer;
+}
+.rest-text:active {
+  font-size: smaller;
+  margin-bottom: 0.25rem;
+}
+.notes-bar {
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.6rem;
+  border: 1px solid blue;
+  padding-left: 0.8rem;
+  outline: none;
+}
+.rest-day {
+  color: grey;
+  font-weight: 900;
+  font-size: x-large;
+  border-radius: 6px;
+  text-align: center;
+}
+.drag-box {
+  transition: padding-top ease-in 0.15s;
+  padding-top: 1.6rem;
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+  min-height: 5rem;
+  border-radius: 8px;
+  border: 2px dashed grey;
+  padding-bottom: 1rem;
+}
+.drag-box-hover {
+  transition: padding-top ease-in 0.15s;
+  padding-top: 20%;
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+  min-height: 6rem;
+  border-radius: 8px;
+  border: 2px dashed white;
+  padding-bottom: 2rem;
+  background-color: rgba(67, 67, 253, 0.699);
+  color: white;
+}
+.plus {
+  height: 12px;
+  width: 12px;
+  margin-bottom: 0px;
+}
+.drag-text {
+  margin-top: 0px;
+  margin-bottom: 1rem;
+}
+.plus-hover {
+  margin-top: 5%;
+  margin-bottom: 1rem;
+  filter: invert(100%);
+}

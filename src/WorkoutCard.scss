@@ -3,6 +3,13 @@
   border-radius: 6px;
   box-shadow: 0px 4px 8px 6px rgba(0, 0, 0, 0.2);
   margin: 0.5rem;
+  color: black !important;
+}
+.outer-card:hover {
+  cursor: grab;
+}
+.outer-card:active {
+  cursor: grabbing;
 }
 .title-wrapper {
   width: 100%;
@@ -42,4 +49,9 @@
 .edit-img {
   width: 1.6em;
   height: 1.6em;
+}
+.outer-card-after {
+  z-index: 110;
+  transition: ease-in width 0.5s;
+  width: 30vw !important;
 }

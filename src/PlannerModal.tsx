@@ -10,13 +10,12 @@ export default function PlannerModal(){
                   <button className="workout-button">Create new workout</button>
                 </div>
                 <div className="pm-content" style={window.outerWidth > 1500 ? {justifyContent: "flex-start"} : {justifyContent: "center"}}>
-                    <WorkoutCard title={"Push Day 1"} edit={false} copy={false} delete={false}/>
-                    <WorkoutCard title={"Push Day 2"} edit={false} copy={false} delete={false}/>
-                    <WorkoutCard title={"Pull Day 1"} edit={false} copy={false} delete={false}/>
-                    <WorkoutCard title={"Pull Day 2"} edit={false} copy={false} delete={false}/>
-                    <WorkoutCard title={"Cardio Blast"} edit={false} copy={false} delete={false}/>
-                    <WorkoutCard title={"Core Focus"} edit={false} copy={false} delete={false}/>
-                    
+                    <WorkoutCard id={"Push Day 1"} title={"Push Day 1"} edit={false} copy={false} delete={false}/>
+                    <WorkoutCard id={"Push Day 2"} title={"Push Day 2"} edit={false} copy={false} delete={false}/>
+                    <WorkoutCard id={"Pull Day 1"} title={"Pull Day 1"} edit={false} copy={false} delete={false}/>
+                    <WorkoutCard id={"Pull Day 2"} title={"Pull Day 2"} edit={false} copy={false} delete={false}/>
+                    <WorkoutCard id={"Cardio Blast"} title={"Cardio Blast"} edit={false} copy={false} delete={false}/>
+                    <WorkoutCard id={"Core Focus"} title={"Core Focus"} edit={false} copy={false} delete={false}/>
                 </div>
         </div>
     )
