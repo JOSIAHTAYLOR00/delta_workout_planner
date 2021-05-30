@@ -49,7 +49,7 @@ if(planData! && wkotData){
                <button className="MuiButtonBase-root MuiButton-root MuiButton-contained" tabIndex={0} type="button" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true">
                  <span className="MuiButton-label">
                    <span className="MuiButton-endIcon MuiButton-iconSizeMedium">
-                     <p className="user-btn">User</p>
+                     <p className="user-btn"></p>
                      <img alt="" className="icon-img" style={{height: "17.67px"}}src="https://img.icons8.com/material-sharp/24/000000/user-male-circle.png"/>
                    </span>
                  </span>

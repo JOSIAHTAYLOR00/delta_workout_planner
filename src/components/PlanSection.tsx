@@ -42,7 +42,7 @@ export default function PlanSection(props: PlanSectionProps): JSX.Element{
             {planData.sort((a: WorkoutPlan, b: WorkoutPlan) => (`${moment(a.date).year()}${moment(a.date).week()}` > `${moment(b.date).year()}${moment(b.date).week()}`) ? 1 : -1).map((e) => {
       return  <div className="week-wrapper" id={moment(e.date).startOf('week').format('DD/MM/YYYY')}>
                 <div className="calendar-bundle">
-                <p className="top-date">{`${moment(e.date).startOf('week').format('MMM Do YYYY')} - ${moment(e.date).startOf('week').add(6, 'days').format(moment(e.date).startOf('week').format('MMM YYYY') === moment(e.date).startOf('week').add(6, 'days').format('MMM YYYY')? 'Do YYYY' : 'MMM Do YYYY')}`}</p>
+                <p className="top-date">{`${moment(e.date).startOf('week').format('MMM D')} - ${moment(e.date).startOf('week').add(6, 'days').format(moment(e.date).startOf('week').format('MM') === moment(e.date).startOf('week').add(6, 'days').format('MM')? 'D' : 'MMM D')}`}</p>
                 <div className="spacer"/>
                 <DatePicker selected={startDate} onChange={handleSelect} className="cal"/>
                 </div>

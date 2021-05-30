@@ -20,6 +20,12 @@
   padding: 0px;
   padding-top: 0px;
 }
+.top-date {
+  padding-left: 2rem;
+  font-size: 1.9rem;
+  margin-top: 1rem;
+  font-weight: 900;
+}
 .week-holder {
   font-size: 1.6rem;
   font-weight: 900;
@@ -30,10 +36,6 @@
   height: 100%;
   width: 100%;
   padding-bottom: 10rem;
-}
-.top-date {
-  padding-left: 2rem;
-  font-size: 1.6rem;
 }
 .plan-day-card-wrapper {
   width: 100%;
@@ -87,7 +89,7 @@
   margin-bottom: 1.45rem;
 }
 .spacer {
-  width: 46rem;
+  width: 35rem;
 }
 .cal {
   z-index: 110;
