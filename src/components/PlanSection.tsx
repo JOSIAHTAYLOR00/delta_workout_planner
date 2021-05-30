@@ -36,7 +36,7 @@ export default function PlanSection(props: PlanSectionProps): JSX.Element{
 
     return(
         <div className="ps-content-wrapper">
-        <div className="ps-header">Plan</div>
+        <div className="ps-header"><p className="plan">Plan</p></div>
         <div className="ps-content">
             <div className="week-holder">
             {planData.sort((a: WorkoutPlan, b: WorkoutPlan) => (`${moment(a.date).year()}${moment(a.date).week()}` > `${moment(b.date).year()}${moment(b.date).week()}`) ? 1 : -1).map((e) => {

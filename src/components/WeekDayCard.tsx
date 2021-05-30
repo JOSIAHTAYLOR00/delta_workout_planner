@@ -101,7 +101,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
                  }
              </div></>
          :
-        <div className="outer-bound" id={`${id}${name}`} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
+        <div className="outer-bound" id={`${id}${name}`} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem', paddingTop: '0.8rem'} : {}}>
             <div className="day-title-wrapper"><p className="day-title">{name}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
             <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
             {print ? <div className="notes">- {notes}</div> : <p/>}

@@ -4,6 +4,7 @@
   box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.2);
   margin: 0.5rem;
   color: black !important;
+  padding-bottom: 6.6rem;
 }
 .outer-card:hover {
   cursor: grab;
@@ -19,7 +20,7 @@
   margin-bottom: 0px;
 }
 .title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-top: 1rem;
   margin-bottom: 0.2rem;
 }
@@ -37,9 +38,9 @@
   display: inline-flex;
   justify-content: center;
   padding-top: 0.6rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 0.4rem;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  margin-top: 0.5rem;
 }
 .circle:hover {
   background-color: rgb(86, 86, 247);
