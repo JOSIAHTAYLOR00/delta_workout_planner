@@ -33,6 +33,7 @@
   font-size: 1.9rem;
   margin-top: 1rem;
   font-weight: 900;
+  margin-left: 3.8rem;
 }
 .week-holder {
   width: 100%;
@@ -52,7 +53,7 @@
   flex-grow: 1;
   flex-direction: row;
   align-content: flex-start;
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 .rest-text {
   color: blue;
@@ -61,7 +62,7 @@
   margin: 0px;
   text-align: right;
   position: relative;
-  bottom: 1.45rem;
+  bottom: 1.46rem;
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -89,4 +90,11 @@
   z-index: 110;
   //   position: fixed;
   margin-top: 2rem;
+}
+.paginate {
+  height: 3rem;
+}
+.paginate-wrapper {
+  margin-top: 0.5rem;
+  margin-left: 5.6rem;
 }

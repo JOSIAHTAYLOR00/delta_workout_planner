@@ -6,6 +6,8 @@ import 'react-date-range/dist/theme/default.css';
 import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import forward from '../assets/forward.png'
+import backward from '../assets/backward.png'
 
 
 interface PlanSectionProps {
@@ -43,8 +45,12 @@ export default function PlanSection(props: PlanSectionProps): JSX.Element{
       return  <div className="week-wrapper" id={moment(e.date).startOf('week').format('DD/MM/YYYY')}>
                 <div className="calendar-bundle">
                 <p className="top-date">{`${moment(e.date).startOf('week').format('MMM D')} - ${moment(e.date).startOf('week').add(6, 'days').format(moment(e.date).startOf('week').format('MM') === moment(e.date).startOf('week').add(6, 'days').format('MM')? 'D' : 'MMM D')}`}</p>
-                <div className="spacer"/>
-                <DatePicker selected={startDate} onChange={handleSelect} className="cal"/>
+                {/* <div className="spacer"/>
+                <DatePicker selected={startDate} onChange={handleSelect} className="cal"/> */}
+                </div>
+                <div className="paginate-wrapper">
+                <img src={backward} alt='' className="paginate"/>
+                <img src={forward} alt='' className="paginate"/>
                 </div>
                 <div className="plan-day-card-wrapper">
                 <WeekDayCard name ={'Sunday'} id={e.workout_plan_id} workouts={e.workouts}/>
