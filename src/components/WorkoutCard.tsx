@@ -44,7 +44,7 @@ export default function WorkoutCard(props: WorkoutCardProps): JSX.Element{
     }
 
     return(
-        <div className="outer-card" id={id} draggable="true" onDragStart={dragStart} onDragOver={dragOver} style={window.outerWidth > 1500 ? {width: "13vw", height: "12vh"} : {width: "90%", height: "15vh"}}>
+        <div className="outer-card" id={id} draggable="true" onDragStart={dragStart} onDragOver={dragOver} style={{width: "12vw", height: "12vh"}}>
             <div className="title-wrapper"><p className="title">{name}</p></div>
             <div className="button-wrapper">
                 <div className="circle"><img src="https://img.icons8.com/material/24/ffffff/edit--v1.png" alt="" className="img"/></div>
