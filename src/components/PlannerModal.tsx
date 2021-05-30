@@ -15,8 +15,22 @@ type Workout = {
 export default function PlannerModal(props: WorkoutCardProps): JSX.Element{
     const {wkotData} = props;
 
+    function handleSubmit(e: any){
+        if(e.keyCode === 13){
+        e.target.replaceWith(e.target.value);
+        }
+    }
+
     function handleClick(e: any){
-        
+        console.log(e.target.parentNode.parentNode.childNodes[2]);
+        const newWorkout = e.target.parentNode.parentNode.childNodes[2].childNodes[0].cloneNode(true);
+        e.target.parentNode.parentNode.childNodes[2].insertBefore(newWorkout, e.target.parentNode.parentNode.childNodes[2].childNodes[0]);
+        console.log(newWorkout.childNodes[0].childNodes[0]);
+        const workoutTitle = document.createElement('input');
+        workoutTitle.placeholder='name workout here';
+        workoutTitle.className="workout-title";
+        newWorkout.childNodes[0].childNodes[0].replaceWith(workoutTitle)
+        workoutTitle.onkeydown=handleSubmit;
     }
     return(
         <div className="p-m-content-wrapper">

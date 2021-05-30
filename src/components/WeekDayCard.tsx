@@ -26,13 +26,15 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
           card.style.height = '6vh';
           card.style.paddingTop = '.5rem';
           card.style.paddingBottom = '4rem';
-        //   <img src="https://img.icons8.com/windows/32/ffffff/visible--v1.png" class="img"/>
           console.log();
-          const eye = document.createElement(`img`)
+          const eye = document.createElement('img');
+          const circ = document.createElement('div');
+          circ.className='circle';
+          card.childNodes[1].childNodes[1].replaceWith(circ);
           eye.src="https://img.icons8.com/windows/32/ffffff/visible--v1.png";
           eye.className="img";
-          card.childNodes[1].childNodes[1].childNodes[0].replaceWith(eye)
-        //   document.getElementById(e.childNodes[1]).src="";
+          card.childNodes[1].childNodes[1].appendChild(eye);
+        // console.log(card.childNodes[1].childNodes[1].appendChild(eye));
           e.target.appendChild(card);
         }
         if(!card){
@@ -87,7 +89,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
     return(
         <>
         {swit ? <><div className="pop-up" onClick={dismiss}>Remember that all workouts will be cleared before this can be marked as a rest day.<button className="got-it">Got it!</button></div>
-                 <div className="outer-bound" id={id} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
+                 <div className="outer-bound" id={`${id}${name}`} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
                  <div className="day-title-wrapper"><p className="day-title">{name}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
                  <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
                  {print ? <div className="notes">- {notes}</div> : <p/>}
@@ -99,7 +101,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
                  }
              </div></>
          :
-        <div className="outer-bound" id={id} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
+        <div className="outer-bound" id={`${id}${name}`} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
             <div className="day-title-wrapper"><p className="day-title">{name}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
             <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
             {print ? <div className="notes">- {notes}</div> : <p/>}
