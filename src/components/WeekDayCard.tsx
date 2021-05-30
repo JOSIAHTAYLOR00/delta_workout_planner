@@ -26,7 +26,9 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
           card.style.height = '6vh';
           card.style.paddingTop = '.5rem';
           card.style.paddingBottom = '4rem';
-          console.log();
+          card.style.fontSize = '1.4rem';
+          card.style.paddingTop = '0.3rem';
+          console.log(card.childNodes);
           const eye = document.createElement('img');
           const circ = document.createElement('div');
           circ.className='circle';

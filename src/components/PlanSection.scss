@@ -33,7 +33,7 @@
   font-size: 1.9rem;
   margin-top: 1rem;
   font-weight: 900;
-  margin-left: 3.8rem;
+  margin-left: 2rem;
 }
 .week-holder {
   width: 100%;
@@ -42,7 +42,6 @@
   height: 100%;
   width: 100%;
   padding-top: 10rem;
-  padding-bottom: 10rem;
 }
 .plan-day-card-wrapper {
   width: 100%;
@@ -54,6 +53,7 @@
   flex-direction: row;
   align-content: flex-start;
   padding-top: 1rem;
+  padding-bottom: 0px;
 }
 .rest-text {
   color: blue;
@@ -96,5 +96,6 @@
 }
 .paginate-wrapper {
   margin-top: 0.5rem;
-  margin-left: 5.6rem;
+  margin-left: 3.2rem;
+  width: 100%;
 }

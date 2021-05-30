@@ -29,7 +29,7 @@ type WorkoutPlanDay = {
 export default function PlanSection(props: PlanSectionProps): JSX.Element{
     const {planData} = props;
     const [startDate, setStartDate] = useState(new Date());
-    let state = 0;
+    let state = planData.length - 2;
 
     //   function handleSelect(e: any){
     //       //smooth scroll: .scrollIntoView({ behavior: 'smooth' })
@@ -39,17 +39,16 @@ export default function PlanSection(props: PlanSectionProps): JSX.Element{
     //   }
 
       function handleForward(e: any){
-        if(state >= 0 && state < e.target.parentElement.parentElement.parentElement.childNodes.length){
-        state += 1;
-        console.log(e.target.parentElement.parentElement.parentElement.childNodes[1]);
+          if(state > 0 && state <= planData.length - 2){state += 1;}
+        if(e.target.parentElement.parentElement.parentElement.childNodes[state] !== undefined){
         e.target.parentElement.parentElement.parentElement.childNodes[state].scrollIntoView();
         window.scrollTo(0,0);
         }
     }
 
     function handleBackward(e: any){
-        if(state > 0 && state < e.target.parentElement.parentElement.parentElement.childNodes.length){
-        state -= 1;
+        if(state >= 0 && state <= planData.length - 1){state -= 1;}
+        if(e.target.parentElement.parentElement.parentElement.childNodes[state] !== undefined){
         e.target.parentElement.parentElement.parentElement.childNodes[state].scrollIntoView();
         window.scrollTo(0,0);
         }
@@ -60,7 +59,7 @@ export default function PlanSection(props: PlanSectionProps): JSX.Element{
         <div className="ps-header"><p className="plan">Plan</p></div>
         <div className="ps-content">
             <div className="week-holder">
-            {planData.sort((a: WorkoutPlan, b: WorkoutPlan) => (`${moment(a.date).year()}${moment(a.date).week()}` > `${moment(b.date).year()}${moment(b.date).week()}`) ? 1 : -1).map((e) => {
+            {planData.sort((a: WorkoutPlan, b: WorkoutPlan) => (`${moment(a.date).year()}${moment(a.date).week()}` < `${moment(b.date).year()}${moment(b.date).week()}`) ? 1 : -1).map((e) => {
       return  <div className="week-wrapper" id={moment(e.date).startOf('week').format('DD/MM/YYYY')}>
                 <div className="calendar-bundle">
                 <p className="top-date">{`${moment(e.date).startOf('week').format('MMM D')} - ${moment(e.date).startOf('week').add(6, 'days').format(moment(e.date).startOf('week').format('MM') === moment(e.date).startOf('week').add(6, 'days').format('MM')? 'D' : 'MMM D')}`}</p>
