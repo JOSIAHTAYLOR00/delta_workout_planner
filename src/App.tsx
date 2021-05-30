@@ -6,20 +6,39 @@ import PlanSection from './PlanSection';
 import axios from 'axios';
 
 function App(): JSX.Element {
-  const url = 'https://api.deltatrainer.fit';
-  const [prod, setProd] = useState(null);
+  const url = 'https://api.deltatrainer.fit/demo/getUserWorkouts';
+  const url2 = 'https://api.deltatrainer.fit/demo/getUserWorkoutPlans';
+  const [planData, setPlanData] = useState([]);
+  const [wkotData, setWkotData] = useState([]);
 
   useEffect(() => {
-    axios.get(url, {
-      auth: {
-      username: 'webdev@deltatrainer.fit',
-      password: ''
-    }
-  }).then(res => {
-      setProd(res.data);
+    axios({
+      method: 'post',
+      url: url,
+      headers: {}, 
+      data: {
+        user_id: 'webdev@deltatrainer.fit', // This is the body part
+      }
+    }).then(res => {
+      // console.log(res.data)
+      setWkotData(res.data)
     });
   }, [url])
 
+  useEffect(() => {
+    axios({
+      method: 'post',
+      url: url2,
+      headers: {}, 
+      data: {
+        user_id: 'webdev@deltatrainer.fit', // This is the body part
+      }
+    }).then(res => {
+      console.log(res.data)
+      setPlanData(res.data);
+    });
+  }, [url])
+if(planData! && wkotData){
   return (
     <div className="App">
      <header className="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary mui-fixed MuiPaper-elevation4" style={{height: "65px", zIndex: 1250}}>
@@ -32,6 +51,7 @@ function App(): JSX.Element {
                <button className="MuiButtonBase-root MuiButton-root MuiButton-contained" tabIndex={0} type="button" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true">
                  <span className="MuiButton-label">
                    <span className="MuiButton-endIcon MuiButton-iconSizeMedium">
+                     <p className="user-btn">User</p>
                      <img alt="" className="icon-img" style={{height: "17.67px"}}src="https://img.icons8.com/material-sharp/24/000000/user-male-circle.png"/>
                    </span>
                  </span>
@@ -44,15 +64,15 @@ function App(): JSX.Element {
      <body>
        <main className="app-main">
         <div className="p-m-wrapper">
-          <PlannerModal/>
+          <PlannerModal wkotData={wkotData}/>
         </div>
         <div className="p-s-wrapper">
-          <PlanSection />
+          <PlanSection planData={planData}/>
         </div>
        </main>
      </body>
     </div>
-  );
+  );} else return <p/>
 }
 
 export default App;

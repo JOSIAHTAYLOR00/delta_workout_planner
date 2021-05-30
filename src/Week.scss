@@ -1,0 +1,83 @@
+.ps-content-wrapper {
+  width: 70vw;
+  height: 100%;
+  flex-wrap: wrap;
+}
+.ps-header {
+  height: 80px;
+  width: 100%;
+  //   background-color: rgb(238, 238, 238);
+  background-color: #2d2c32;
+  width: 100%;
+  text-align: center;
+  font-weight: 550;
+  font-size: 22px;
+  color: white;
+  padding-top: 1.8rem;
+}
+.ps-content {
+  height: 100%;
+  width: 100%;
+  //   padding: 2rem;
+  padding: 0px;
+  padding-top: 0px;
+}
+.week-holder {
+  font-size: 1.6rem;
+  font-weight: 900;
+  width: 100%;
+  margin-left: 2rem;
+}
+.calendar {
+  border: 1px solid rgb(228, 226, 226);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 60vh;
+}
+.calendar-wrapper {
+  padding-top: 18vh;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  height: 100vh;
+}
+.week-wrapper {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 10rem;
+  border-bottom: 1px solid black;
+}
+.plan-day-card-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-direction: row;
+  align-content: flex-start;
+}
+.rest-text {
+  color: blue;
+  //   font-weight: bolder;
+  float: right;
+  width: 100%;
+  margin: 0px;
+  text-align: right;
+  position: relative;
+  bottom: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.rest-text:hover {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(82, 82, 253);
+}
+.rest-text:active {
+  font-size: smaller;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(82, 82, 253);
+}

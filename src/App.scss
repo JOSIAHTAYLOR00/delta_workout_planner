@@ -201,3 +201,16 @@ button {
   display: inline-flex;
   width: 100vw;
 }
+.user-btn {
+  width: 0vw !important;
+  height: 0vh !important;
+  margin: 0px;
+  padding-top: 0.2vh;
+}
+.MuiButtonBase-root:active {
+  background-color: white !important;
+}
+.MuiButtonBase-root:hover {
+  cursor: pointer;
+  background-color: white !important;
+}

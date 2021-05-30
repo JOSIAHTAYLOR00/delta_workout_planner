@@ -16,23 +16,6 @@
   width: 30%;
   margin: 0px;
 }
-.rest-text {
-  color: blue;
-  //   font-weight: bolder;
-  float: right;
-  width: 100%;
-  margin: 0px;
-  text-align: right;
-  position: relative;
-  bottom: 1.2rem;
-}
-.rest-text:hover {
-  cursor: pointer;
-}
-.rest-text:active {
-  font-size: smaller;
-  margin-bottom: 0.25rem;
-}
 .notes-bar {
   width: 100%;
   height: 2rem;
@@ -49,9 +32,9 @@
   text-align: center;
 }
 .drag-box {
-  transition: padding-top ease-in 0.25s;
+  transition: padding-top ease-in 0.15s;
   transition: background-color ease-in 0.15s;
-  padding-top: 1.6rem;
+  padding-top: 1rem;
   margin-top: 1rem;
   text-align: center;
   width: 100%;
@@ -80,7 +63,9 @@
 }
 .drag-text {
   margin-top: 0px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 .plus-hover {
   margin-top: 5%;
@@ -98,13 +83,37 @@ img {
   -ms-user-select: none;
 }
 .notes {
+  font-size: 0.9rem;
   margin-top: 0.5rem;
   width: 100%;
   height: 2rem;
   border-radius: 0.6rem;
   padding: 0.3rem;
+  padding-top: 0.4rem;
   outline: none;
-  //   background-color: rgba(128, 128, 128, 0.267);
-  background-color: rgb(101, 101, 253);
+  background-color: rgba(67, 67, 253, 0.699);
   color: white;
+}
+.pop-up {
+  z-index: 110;
+  // position: relative;
+  // top: 5rem;
+  width: 40vw;
+  height: 20vh;
+  background-color: rgba(67, 67, 253, 0.699);
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+.got-it {
+  position: relative;
+  top: 5rem;
+  left: 16rem;
+  border: none;
+}
+.got-it:hover {
+  background-color: white;
 }

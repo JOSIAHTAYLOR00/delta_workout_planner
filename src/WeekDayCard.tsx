@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import './WeekDayCard.scss'
 
 interface WeekDayCardProps {
-    day: string,
-    restDay: boolean,
-    id: string,
-    onChange: any,
+    workout_plan_id: string,
+    workouts: Array<object>,
+    id: string;
 }
 
 export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
-    const {day, restDay, id, onChange} = props;
+    const {id, workout_plan_id} = props;
+    const restDay = false;
     const [rest, setRest] = useState(restDay);
     const [classs, setClasss] = useState('drag-box');
     const [notes, setNotes] = useState(null);
     const [print, setPrint] = useState(false);
     const [value, setValue] = useState('');
+    const [swit, setSwit] = useState(false);
     const drop = (e: any): void => {
         e.preventDefault();
         const cardId = e.dataTransfer.getData('cardId');
@@ -25,8 +26,8 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
           card.style.height = '6vh';
           card.style.paddingTop = '.5rem';
           card.style.paddingBottom = '4rem';
+          e.target.appendChild(card);
         }
-        e.target.appendChild(card);
         setClasss('drag-box');
     }
     const dragOver = (e: any): void => {
@@ -53,26 +54,51 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
     }
     function handleClick(e: any){
         const dayId = document.getElementById(e.target.parentElement.parentNode.id)
-        let parent;
-        console.log(dayId!.childNodes[3].childNodes);
-        for(let e = dayId!.childNodes[3].childNodes.length-1; e > 1; e--){
-            parent = dayId!.childNodes[3];
-            parent.removeChild(dayId!.childNodes[3].childNodes[e]);
+        if(dayId!.childNodes[3].childNodes.length > 2){
+            // alert('Please remove all workouts from a day before marking it as a rest day :)');
+            setSwit(true)
         }
+        // let parent;
+        // for(let e = dayId!.childNodes[3].childNodes.length-1; e > 1; e--){
+        //     parent = dayId!.childNodes[3];
+        //     parent.removeChild(dayId!.childNodes[3].childNodes[e]);
+        // }
+        if(dayId!.childNodes[3].childNodes.length <= 2){
         setRest(!rest);
+        }
     }
 
+    function dismiss(e: any){
+        setSwit(false);
+    }
+
+
     return(
+        <>
+        {swit ? <><div className="pop-up" onClick={dismiss}>Remember that all workouts will be cleared before this can be marked as a rest day.<button className="got-it">Got it!</button></div>
+                 <div className="outer-bound" id={id} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
+                 <div className="day-title-wrapper"><p className="day-title">{id}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
+                 <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
+                 {print ? <div className="notes">- {notes}</div> : <p/>}
+                 {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> :
+                   <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop}>
+                     <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
+                     <p className="drag-text" >Drag to add workout</p>
+                   </div>
+                 }
+             </div></>
+         :
         <div className="outer-bound" id={id} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
-            <div className="day-title-wrapper"><p className="day-title">{day}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
+            <div className="day-title-wrapper"><p className="day-title">{id}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
             <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
             {print ? <div className="notes">- {notes}</div> : <p/>}
             {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> :
               <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop}>
-                <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" onDragOver={dragOver} onDrop={drop} className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
-                <p className="drag-text" onDragOver={dragOver} onDrop={drop}>Drag to add workout</p>
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
+                <p className="drag-text" >Drag to add workout</p>
               </div>
             }
-        </div>
+        </div>}
+        </>
     )
 }

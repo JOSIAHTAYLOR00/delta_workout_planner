@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import './WorkoutCard.scss';
 
 interface WorkoutCardProps {
-    title: string,
-    edit: boolean,
-    copy: boolean,
-    delete: boolean,
+    name: string,
     id: string,
-    workoutCardAr: Array<object>,
+    user_id: string,
+    workout_id: string,
 }
 
 export default function WorkoutCard(props: WorkoutCardProps){
-    const {title, id, workoutCardAr} = props;
-    const [cardAr, setCardAr] = useState(workoutCardAr)
+    const {name, id} = props;
+    // const [flip, setFlip] = useState(false);
     const dragStart = (e: any): void => {
         const target = e.target;
         e.dataTransfer.setData('cardId', target.id);
@@ -26,23 +24,38 @@ export default function WorkoutCard(props: WorkoutCardProps){
         e.stopPropagation();
     }
 
-    function handleClick(e:any){
-        // e.target.parentElement.parentElement.parentElement.parentElement.appendChild(e.target.parentElement.parentElement.parentElement);
-        // document.createElement(e.target.parentElement.parentElement.parentElement);
+    function handleCopy(e: any){
+        // e.preventDefault();
         const el = e.target.parentElement.parentElement.parentElement;
-        // cardAr.push({id: el.id, title: el.id, edit: el.edit, copy: el.copy, delete: el.delete});
-        setCardAr([...cardAr, {id: el.id, title: el.id, edit: el.edit, copy: el.copy, delete: el.delete}]);
+        const pEl = e.target.parentElement.parentElement.parentElement.parentElement;
+        const clone = e.target.parentElement.parentElement.parentElement.cloneNode(true);
+        clone.id = `cardId`;
+        if(el.childNodes.length <= 2 && el.childNodes[0].className === 'title-wrapper' ){
+        clone.childNodes[1].childNodes[1].addEventListener('click', handleCopy);
+        clone.childNodes[1].childNodes[2].addEventListener('click', handleDelete);
+        pEl.appendChild(clone);
+        }
+        // setFlip(!flip);
+    }
+    function handleDelete(e: any){
+        // e.preventDefault();
+        const el = e.target.parentElement.parentElement.parentElement;
+        const pEl = e.target.parentElement.parentElement.parentElement.parentElement;
+        console.log(el.childNodes);
+        if(el.childNodes.length <= 2 && el.childNodes[0].className === 'title-wrapper' ){
+          pEl.removeChild(el);
+        }
     }
 
     // console.log(cardAr)
 
     return(
         <div className="outer-card" id={id} draggable="true" onDragStart={dragStart} onDragOver={dragOver} style={window.outerWidth > 1500 ? {width: "13vw", height: "12vh"} : {width: "90%", height: "15vh"}}>
-            <div className="title-wrapper"><p className="title">{title}</p></div>
+            <div className="title-wrapper"><p className="title">{name}</p></div>
             <div className="button-wrapper">
                 <div className="circle"><img src="https://img.icons8.com/material/24/ffffff/edit--v1.png" alt="" className="edit-img"/></div>
-                <div className="circle" onClick={handleClick}><img src="https://img.icons8.com/ios-glyphs/30/ffffff/duplicate.png" alt="" className="edit-img"/></div>
-                <div className="circle"><img src="https://img.icons8.com/windows/32/ffffff/delete-forever.png" alt="" className="edit-img"/></div>
+                <div className="circle" onClick={handleCopy}><img src="https://img.icons8.com/ios-glyphs/30/ffffff/duplicate.png" alt="" className="edit-img"/></div>
+                <div className="circle" onClick={handleDelete}><img src="https://img.icons8.com/windows/32/ffffff/delete-forever.png" alt="" className="edit-img"/></div>
             </div>
         </div>
     )

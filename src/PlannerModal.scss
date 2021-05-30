@@ -1,7 +1,8 @@
 .p-m-content-wrapper {
   width: 100%;
-  height: 100vh;
+  height: 93.5vh;
   overflow-y: scroll;
+  padding-bottom: 2rem;
 }
 .workout-header {
   width: 100%;
@@ -17,8 +18,8 @@
   background-color: #2d2c32;
 }
 .pm-content {
-  height: 100%;
   width: 100%;
+  min-height: 93.5vh;
   border-right: 1px solid #2d2c32;
   display: inline-flex;
   padding: 1.2rem;
