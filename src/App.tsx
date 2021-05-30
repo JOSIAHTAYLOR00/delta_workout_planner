@@ -1,43 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import logo from './assets/dt-logo-white.png';
-import PlannerModal from './PlannerModal';
-import PlanSection from './PlanSection';
+import PlannerModal from './components/PlannerModal';
+import PlanSection from './components/PlanSection';
 import axios from 'axios';
 
 function App(): JSX.Element {
-  const url = 'https://api.deltatrainer.fit/demo/getUserWorkouts';
-  const url2 = 'https://api.deltatrainer.fit/demo/getUserWorkoutPlans';
+  const baseURL = 'https://api.deltatrainer.fit/demo/';
   const [planData, setPlanData] = useState([]);
   const [wkotData, setWkotData] = useState([]);
 
   useEffect(() => {
     axios({
       method: 'post',
-      url: url,
+      url: `${baseURL}getUserWorkouts`,
       headers: {}, 
       data: {
-        user_id: 'webdev@deltatrainer.fit', // This is the body part
+        user_id: 'webdev@deltatrainer.fit',
       }
     }).then(res => {
-      // console.log(res.data)
       setWkotData(res.data)
     });
-  }, [url])
+  }, [`${baseURL}getUserWorkouts`]);
 
   useEffect(() => {
     axios({
       method: 'post',
-      url: url2,
+      url: `${baseURL}getUserWorkoutPlans`,
       headers: {}, 
       data: {
-        user_id: 'webdev@deltatrainer.fit', // This is the body part
+        user_id: 'webdev@deltatrainer.fit',
       }
     }).then(res => {
-      console.log(res.data)
       setPlanData(res.data);
     });
-  }, [url])
+  }, [`${baseURL}getUserWorkoutPlans`]);
+
 if(planData! && wkotData){
   return (
     <div className="App">

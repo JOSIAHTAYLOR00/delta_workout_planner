@@ -3,21 +3,17 @@ import './PlannerModal.scss';
 import WorkoutCard from './WorkoutCard';
 
 interface WorkoutCardProps{
-    wkotData: any,
+    wkotData: Array<Workout>,
 }
 
-// const workoutCardAr: WorkoutCardProps[] = [
-//     {workout_id: 'Push Day 1', name: 'Push Day 1'},
-//     {workout_id: 'Push Day 2', name: 'Push Day 2'},
-//     {workout_id: 'Pull Day 1', name: 'Pull Day 1'},
-//     {workout_id: 'Pull Day 2', name: 'Pull Day 2'},
-//     {workout_id: 'Cardio Blast', name: 'Cardio Blast'},
-//     {workout_id: 'Core Focus', name: 'Core Focus'}
-// ];
+type Workout = {
+    workout_id: string,
+    user_id: string,
+    name: string,
+}
 
-export default function PlannerModal(props: WorkoutCardProps){
+export default function PlannerModal(props: WorkoutCardProps): JSX.Element{
     const {wkotData} = props;
-    // const [wkotAr, setWkotAr] = useState(workoutCardAr);
 
     function handleClick(e: any){
         

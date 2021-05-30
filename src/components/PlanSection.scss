@@ -6,7 +6,6 @@
 .ps-header {
   height: 80px;
   width: 100%;
-  //   background-color: rgb(238, 238, 238);
   background-color: #2d2c32;
   width: 100%;
   text-align: center;
@@ -18,7 +17,6 @@
 .ps-content {
   height: 100%;
   width: 100%;
-  //   padding: 2rem;
   padding: 0px;
   padding-top: 0px;
 }
@@ -26,26 +24,17 @@
   font-size: 1.6rem;
   font-weight: 900;
   width: 100%;
-  margin-left: 2rem;
-}
-.calendar {
-  border: 1px solid rgb(228, 226, 226);
-  border-radius: 10px;
-  overflow: hidden;
-  height: 60vh;
-}
-.calendar-wrapper {
-  padding-top: 18vh;
-  width: 100%;
-  display: inline-flex;
-  justify-content: center;
-  height: 100vh;
+  // margin-left: 2rem;
 }
 .week-wrapper {
   height: 100%;
   width: 100%;
   padding-bottom: 10rem;
   border-bottom: 1px solid black;
+}
+.top-date {
+  padding-left: 2rem;
+  font-size: 1.6rem;
 }
 .plan-day-card-wrapper {
   width: 100%;
@@ -59,7 +48,6 @@
 }
 .rest-text {
   color: blue;
-  //   font-weight: bolder;
   float: right;
   width: 100%;
   margin: 0px;
@@ -80,4 +68,31 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: rgb(82, 82, 253);
+}
+.calendar {
+  border: 1px solid rgb(228, 226, 226);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 60vh;
+}
+.calendar-wrapper {
+  padding-top: 18vh;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  height: 100vh;
+}
+.calendar-bundle {
+  width: 100%;
+  display: inline-flex;
+  margin-bottom: 1.45rem;
+  border-bottom: 1px solid black;
+}
+.spacer {
+  width: 46rem;
+}
+.cal {
+  z-index: 110;
+  //   position: fixed;
+  margin-top: 2rem;
 }

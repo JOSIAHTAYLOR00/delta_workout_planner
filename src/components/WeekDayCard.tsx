@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './WeekDayCard.scss'
 
 interface WeekDayCardProps {
-    workout_plan_id: string,
+    id: string,
     workouts: Array<object>,
-    id: string;
+    name: string;
 }
 
 export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
-    const {id, workout_plan_id} = props;
+    const {id, name} = props;
     const restDay = false;
     const [rest, setRest] = useState(restDay);
     const [classs, setClasss] = useState('drag-box');
@@ -20,13 +20,23 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
         e.preventDefault();
         const cardId = e.dataTransfer.getData('cardId');
         const card = document.getElementById(cardId);
-        if(card){
+        if(card && document){
           card.style.display = 'inline-flex';
-          card.style.width = '90%';
+          card.style.width = '95%';
           card.style.height = '6vh';
           card.style.paddingTop = '.5rem';
           card.style.paddingBottom = '4rem';
+        //   <img src="https://img.icons8.com/windows/32/ffffff/visible--v1.png" class="img"/>
+          console.log();
+          const eye = document.createElement(`img`)
+          eye.src="https://img.icons8.com/windows/32/ffffff/visible--v1.png";
+          eye.className="img";
+          card.childNodes[1].childNodes[1].childNodes[0].replaceWith(eye)
+        //   document.getElementById(e.childNodes[1]).src="";
           e.target.appendChild(card);
+        }
+        if(!card){
+            alert('Try dropping a workout card in here!');
         }
         setClasss('drag-box');
     }
@@ -54,6 +64,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
     }
     function handleClick(e: any){
         const dayId = document.getElementById(e.target.parentElement.parentNode.id)
+        console.log(e.target.parentElement.parentNode.id);
         if(dayId!.childNodes[3].childNodes.length > 2){
             // alert('Please remove all workouts from a day before marking it as a rest day :)');
             setSwit(true)
@@ -77,7 +88,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
         <>
         {swit ? <><div className="pop-up" onClick={dismiss}>Remember that all workouts will be cleared before this can be marked as a rest day.<button className="got-it">Got it!</button></div>
                  <div className="outer-bound" id={id} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
-                 <div className="day-title-wrapper"><p className="day-title">{id}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
+                 <div className="day-title-wrapper"><p className="day-title">{name}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
                  <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
                  {print ? <div className="notes">- {notes}</div> : <p/>}
                  {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> :
@@ -89,7 +100,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
              </div></>
          :
         <div className="outer-bound" id={id} style={rest ? {backgroundColor: 'rgba(128, 128, 128, 0.267)', borderRadius: '6px', padding: '1.5rem'} : {}}>
-            <div className="day-title-wrapper"><p className="day-title">{id}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
+            <div className="day-title-wrapper"><p className="day-title">{name}</p><p className="rest-text" onClick={handleClick}>{rest ? `Unmark as rest day`:`Mark as rest day`}</p></div>
             <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
             {print ? <div className="notes">- {notes}</div> : <p/>}
             {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> :

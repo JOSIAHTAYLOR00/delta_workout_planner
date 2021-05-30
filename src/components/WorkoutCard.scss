@@ -19,9 +19,9 @@
   margin-bottom: 0px;
 }
 .title {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-top: 1rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 .button-wrapper {
   width: 100%;
@@ -31,14 +31,15 @@
 }
 .circle {
   background-color: blue;
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 100%;
   display: inline-flex;
   justify-content: center;
-  padding-top: 0.8rem;
+  padding-top: 0.6rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  margin-top: 0.4rem;
 }
 .circle:hover {
   background-color: rgb(86, 86, 247);
@@ -47,7 +48,7 @@
 .circle:active {
   background-color: blue;
 }
-.edit-img {
+.img {
   width: 1.6rem;
   height: 1.6rem;
 }

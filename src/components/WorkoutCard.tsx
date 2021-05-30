@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './WorkoutCard.scss';
 
 interface WorkoutCardProps {
@@ -8,9 +8,8 @@ interface WorkoutCardProps {
     workout_id: string,
 }
 
-export default function WorkoutCard(props: WorkoutCardProps){
+export default function WorkoutCard(props: WorkoutCardProps): JSX.Element{
     const {name, id} = props;
-    // const [flip, setFlip] = useState(false);
     const dragStart = (e: any): void => {
         const target = e.target;
         e.dataTransfer.setData('cardId', target.id);
@@ -20,12 +19,11 @@ export default function WorkoutCard(props: WorkoutCardProps){
         }, 0);
     }
 
-    const dragOver = (e: any): void => {
+    const dragOver = (e: { stopPropagation: () => void; }): void => {
         e.stopPropagation();
     }
 
     function handleCopy(e: any){
-        // e.preventDefault();
         const el = e.target.parentElement.parentElement.parentElement;
         const pEl = e.target.parentElement.parentElement.parentElement.parentElement;
         const clone = e.target.parentElement.parentElement.parentElement.cloneNode(true);
@@ -35,10 +33,8 @@ export default function WorkoutCard(props: WorkoutCardProps){
         clone.childNodes[1].childNodes[2].addEventListener('click', handleDelete);
         pEl.appendChild(clone);
         }
-        // setFlip(!flip);
     }
     function handleDelete(e: any){
-        // e.preventDefault();
         const el = e.target.parentElement.parentElement.parentElement;
         const pEl = e.target.parentElement.parentElement.parentElement.parentElement;
         console.log(el.childNodes);
@@ -47,15 +43,13 @@ export default function WorkoutCard(props: WorkoutCardProps){
         }
     }
 
-    // console.log(cardAr)
-
     return(
         <div className="outer-card" id={id} draggable="true" onDragStart={dragStart} onDragOver={dragOver} style={window.outerWidth > 1500 ? {width: "13vw", height: "12vh"} : {width: "90%", height: "15vh"}}>
             <div className="title-wrapper"><p className="title">{name}</p></div>
             <div className="button-wrapper">
-                <div className="circle"><img src="https://img.icons8.com/material/24/ffffff/edit--v1.png" alt="" className="edit-img"/></div>
-                <div className="circle" onClick={handleCopy}><img src="https://img.icons8.com/ios-glyphs/30/ffffff/duplicate.png" alt="" className="edit-img"/></div>
-                <div className="circle" onClick={handleDelete}><img src="https://img.icons8.com/windows/32/ffffff/delete-forever.png" alt="" className="edit-img"/></div>
+                <div className="circle"><img src="https://img.icons8.com/material/24/ffffff/edit--v1.png" alt="" className="img"/></div>
+                <div className="circle" onClick={handleCopy}><img src="https://img.icons8.com/ios-glyphs/30/ffffff/duplicate.png" alt="" className="img" id="to-view"/></div>
+                <div className="circle" onClick={handleDelete}><img src="https://img.icons8.com/windows/32/ffffff/delete-forever.png" alt="" className="img"/></div>
             </div>
         </div>
     )
