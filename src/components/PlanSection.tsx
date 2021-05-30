@@ -8,6 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import forward from '../assets/forward.png'
 import backward from '../assets/backward.png'
+import { setDate } from 'date-fns/esm';
 
 
 interface PlanSectionProps {
@@ -28,13 +29,31 @@ type WorkoutPlanDay = {
 export default function PlanSection(props: PlanSectionProps): JSX.Element{
     const {planData} = props;
     const [startDate, setStartDate] = useState(new Date());
+    let state = 0;
 
-      function handleSelect(e: any){
-          //smooth scroll: .scrollIntoView({ behavior: 'smooth' })
-          document?.getElementById(moment(e).startOf('week').format('DD/MM/YYYY'))?.scrollIntoView();
-          window.scrollTo(0,0);
-          setStartDate(e);
-      }
+    //   function handleSelect(e: any){
+    //       //smooth scroll: .scrollIntoView({ behavior: 'smooth' })
+    //       document?.getElementById(moment(e).startOf('week').format('DD/MM/YYYY'))?.scrollIntoView();
+    //       window.scrollTo(0,0);
+    //       setStartDate(e);
+    //   }
+
+      function handleForward(e: any){
+        if(state >= 0 && state < e.target.parentElement.parentElement.parentElement.childNodes.length){
+        state += 1;
+        console.log(e.target.parentElement.parentElement.parentElement.childNodes[1]);
+        e.target.parentElement.parentElement.parentElement.childNodes[state].scrollIntoView();
+        window.scrollTo(0,0);
+        }
+    }
+
+    function handleBackward(e: any){
+        if(state > 0 && state < e.target.parentElement.parentElement.parentElement.childNodes.length){
+        state -= 1;
+        e.target.parentElement.parentElement.parentElement.childNodes[state].scrollIntoView();
+        window.scrollTo(0,0);
+        }
+    }
 
     return(
         <div className="ps-content-wrapper">
@@ -49,8 +68,8 @@ export default function PlanSection(props: PlanSectionProps): JSX.Element{
                 <DatePicker selected={startDate} onChange={handleSelect} className="cal"/> */}
                 </div>
                 <div className="paginate-wrapper">
-                <img src={backward} alt='' className="paginate"/>
-                <img src={forward} alt='' className="paginate"/>
+                <img src={backward} alt='' className="paginate" onClick={handleBackward}/>
+                <img src={forward} alt='' className="paginate" onClick={handleForward}/>
                 </div>
                 <div className="plan-day-card-wrapper">
                 <WeekDayCard name ={'Sunday'} id={e.workout_plan_id} workouts={e.workouts}/>
