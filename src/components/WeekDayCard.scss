@@ -35,27 +35,35 @@
   text-align: center;
 }
 .drag-box {
-  transition: padding-top ease-in 0.15s;
-  transition: background-color ease-in 0.15s;
-  padding-top: 1rem;
-  margin-top: 1rem;
+  // transition: padding-top ease-in 0.15s;
+  // transition: background-color ease-in 0.15s;
   text-align: center;
   width: 100%;
   min-height: 5rem;
+  border-radius: 8px;
+  padding-bottom: 1rem;
+}
+.drag-box2 {
+  // transition: padding-top ease-in 0.15s;
+  // transition: background-color ease-in 0.15s;
+  padding-top: 1rem;
+  text-align: center;
+  width: 100%;
+  min-height: 6vh;
+  height: 8vh;
   border-radius: 8px;
   border: 2px dashed grey;
   padding-bottom: 1rem;
 }
 .drag-box-hover {
-  transition: padding-top ease-in 0.15s;
-  padding-top: 20%;
+  // transition: padding-top ease-in 0.15s;
+  margin-bottom: 2rem;
+  padding-bottom: 30%;
   margin-top: 1rem;
   text-align: center;
   width: 100%;
   min-height: 6rem;
   border-radius: 8px;
-  border: 2px dashed white;
-  padding-bottom: 2rem;
   background-color: rgba(67, 67, 253, 0.699);
   color: white;
 }
@@ -71,7 +79,7 @@
   font-weight: 500;
 }
 .plus-hover {
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 1rem;
   filter: invert(100%);
   position: relative;
@@ -113,10 +121,20 @@ img {
 }
 .got-it {
   position: relative;
-  top: 5rem;
-  left: 16rem;
+  top: 3rem;
+  right: 2.5rem;
   border: none;
 }
 .got-it:hover {
   background-color: white;
+}
+.checker {
+  padding-top: 1rem;
+  text-align: center;
+  width: 100%;
+  min-height: 8vh;
+  max-height: 8h;
+  border-radius: 8px;
+  border: 2px dashed grey;
+  padding-bottom: 1rem;
 }

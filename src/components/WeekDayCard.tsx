@@ -4,7 +4,7 @@ import './WeekDayCard.scss'
 interface WeekDayCardProps {
     id: string,
     workouts: Array<object>,
-    name: string;
+    name: string,
 }
 
 export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
@@ -16,6 +16,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
     const [print, setPrint] = useState(false);
     const [value, setValue] = useState('');
     const [swit, setSwit] = useState(false);
+
     const drop = (e: any): void => {
         e.preventDefault();
         const cardId = e.dataTransfer.getData('cardId');
@@ -26,8 +27,9 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
           card.style.height = '6vh';
           card.style.paddingTop = '.5rem';
           card.style.paddingBottom = '4rem';
-          card.style.fontSize = '1.4rem';
-          card.style.paddingTop = '0.3rem';
+          card.style.fontSize = '1.3rem';
+          card.style.paddingTop = '0.7rem';
+          card.style.paddingLeft = '0.4rem';
           console.log(card.childNodes);
           const eye = document.createElement('img');
           const circ = document.createElement('div');
@@ -37,7 +39,7 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
           eye.className="img";
           card.childNodes[1].childNodes[1].appendChild(eye);
         // console.log(card.childNodes[1].childNodes[1].appendChild(eye));
-          e.target.appendChild(card);
+          e.target.insertBefore(card, e.target.childNodes[0]);
         }
         if(!card){
             alert('Try dropping a workout card in here!');
@@ -96,10 +98,13 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
                  <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
                  {print ? <div className="notes">- {notes}</div> : <p/>}
                  {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> :
-                   <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop}>
+                 <>
+                   <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop} />
+                   <div className='drag-box2'>
                      <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
                      <p className="drag-text" >Drag to add workout</p>
                    </div>
+                   </>
                  }
              </div></>
          :
@@ -108,10 +113,13 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
             <form onSubmit={submit}><input value={value} autoComplete="off" type="text" id="userInput" className="notes-bar" placeholder="Enter notes" onChange={getData}/></form>
             {print ? <div className="notes">- {notes}</div> : <p/>}
             {rest ? <div className="rest-day"><p style={{marginTop: '2rem'}}>Rest day</p></div> :
-              <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop}>
-                <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
-                <p className="drag-text" >Drag to add workout</p>
-              </div>
+                 <>
+                 <div className={classs} id={id} onDragOver={dragOver} onDragLeave={dragExit} onDrop={drop} />
+                 <div className="checker">
+                   <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-math.png" alt="" className={classs === 'drag-box-hover' ? 'plus-hover' : 'plus'}/>
+                   <p className="drag-text" >Drag to add workout</p>
+                 </div>
+                 </>
             }
         </div>}
         </>

@@ -45,7 +45,7 @@
 }
 .plan-day-card-wrapper {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: inline-flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -54,6 +54,7 @@
   align-content: flex-start;
   padding-top: 1rem;
   padding-bottom: 0px;
+  margin-bottom: 10rem;
 }
 .rest-text {
   color: blue;
