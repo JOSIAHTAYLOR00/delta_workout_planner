@@ -13,8 +13,10 @@
   padding-top: 1.8rem;
   border-right: 1px solid white;
   height: 80px;
-  width: 100%;
+  max-width: 30vw;
   background-color: #2d2c32;
+  position: fixed;
+  z-index: 110;
 }
 .pm-content {
   width: 100%;
@@ -35,6 +37,7 @@
   justify-content: center;
   padding-top: 2rem;
   border-right: 1px solid #2d2c32;
+  margin-top: 5rem;
 }
 .workout-button {
   min-width: 12vw;

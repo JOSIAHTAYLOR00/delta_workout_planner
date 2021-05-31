@@ -25,10 +25,9 @@ export default function WeekDayCard(props: WeekDayCardProps): JSX.Element{
           card.style.display = 'inline-flex';
           card.style.width = '95%';
           card.style.height = '6vh';
-          card.style.paddingTop = '.5rem';
-          card.style.paddingBottom = '4rem';
-          card.style.fontSize = '1.3rem';
-          card.style.paddingTop = '0.7rem';
+          card.style.paddingTop = '1rem';
+          card.style.paddingBottom = '3.5rem';
+          card.style.fontSize = '1.1rem';
           card.style.paddingLeft = '0.4rem';
           console.log(card.childNodes);
           const eye = document.createElement('img');
